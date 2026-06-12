@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
- let isconnected = false;
+ let isConnected = false;
 
  async function connectToMongoDB(){
     try{
@@ -28,7 +28,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
           useNewUrlParser: true,
           useUnifiedTopology: true,
         });
-        isconnected = true;
+        isConnected = true;
         console.log('Connected to MongoDB');
     }catch(error){
         console.error('Error connecting to MongoDB:', error);
