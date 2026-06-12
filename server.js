@@ -47,6 +47,9 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 next();
  })
 
+ app.get('/', (req, res) => {
+    res.send('Backend is running successfully! 🚀');
+ });
 
 // Routes
 app.use('/api', apiRoutes);
