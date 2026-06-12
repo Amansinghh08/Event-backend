@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const apiRoutes = require('./routes/apiRoutes');
+const mongoose = require('mongoose');
 
 // Load environment variables
 dotenv.config();
@@ -12,7 +13,7 @@ connectDB();
 
 const app = express();
 const path = require('path');
-const { default: mongoose } = require('mongoose');
+
 
 // Middleware
 app.use(cors());
@@ -23,7 +24,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
  async function connectToMongoDB(){
     try{
-        await mongoose.connect(process.evn.MONGO_URI,{
+        await mongoose.connect(process.env.MONGO_URI,{
           useNewUrlParser: true,
           useUnifiedTopology: true,
         });
@@ -52,6 +53,6 @@ app.use('/api', apiRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 module.exports = app
