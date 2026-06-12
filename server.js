@@ -40,7 +40,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
     }
 
  // add middleware
- aap.use((req, res, next) => {
+ app.use((req, res, next) => {
     if (!isConnected){
         connectToMongoDB();
     }
